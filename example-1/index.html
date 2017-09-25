@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="fw">
+<head>
+    <title>Flow watch</title>
+    <link href="favicon.ico" rel="icon" type="image/x-icon" />
+
+
+    <link href="frontend/css/tmp_move_to_sass.css" rel="stylesheet">
+
+    <!--Angular-->
+    <script src="node_modules/angular/angular.js"></script>
+    <!--Lodash-->
+    <script src="node_modules/lodash/lodash.js"></script>
+
+
+    <!-- inject:js -->
+    <script src="/frontend/a.js"></script>
+    <script src="/frontend/x-controller.js"></script>
+    <!-- endinject -->
+
+
+
+
+</head>
+<body>
+
+    <!-- ----------------------- main content ---------------------------------------------------- -->
+    <div class="content" ng-controller="ACtrl">
+       
+       {{a}}
+       <div ng-repeat=" line in lines">
+          Temperature <input type="number" ng-model="line.temperature"/> °C
+          Time interval   <input type="number" ng-model="line.time"/> seconds
+          start <span>{{line.start}}</span>
+          stop <span>{{line.stop}}</span>
+          <button ng-click="add()" ng-show="$last" >Add next</button>
+       </div>
+    </div>
+    <br/>
+    <div>
+    <canvas id="myCanvas" width="600" height="300" style="border:1px solid #d3d3d3;">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    </div>
+
+    <script src="http://localhost:35729/livereload.js"></script>
+    
+
+
+
+
+
+</body>
+</html>
