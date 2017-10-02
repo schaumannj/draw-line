@@ -48,7 +48,7 @@ function notifyLivereload(event) {
 gulp.task('index', function () {
     var target = gulp.src('./index.html');
     // It's not necessary to read the files (will speed up things), we're only after their paths:
-    var sources = gulp.src(['./frontend/**/*.js'], {read: false});
+    var sources = gulp.src(['./**/*.js'], {read: false});
 
     return target.pipe(inject(sources)).pipe(gulp.dest('.'));
 });
@@ -63,7 +63,7 @@ gulp.task('open', function(){
 gulp.task('run', function () {
     startExpress();
     startLivereload();
-    gulp.watch(['./**/*.html', './**/*.css', './frontend/**/*.js', './resources/js/*.js' ], notifyLivereload);
+    gulp.watch(['./**/*.html', './**/*.css', './**/*.js' ], notifyLivereload);
     console.log('Express server is running at localhost:' + EXPRESS_PORT + '!');
 });
 
