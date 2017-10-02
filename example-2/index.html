@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="fw">
+<html ng-app="test">
 <head>
     <title>Draw Line</title>
     <!--link href="favicon.ico" rel="icon" type="image/x-icon" /-->
@@ -11,6 +11,8 @@
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
     <!--Lodash-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
+    <!--Highchart-->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -28,44 +30,30 @@
 
     <!-- ----------------------- main content ---------------------------------------------------- -->
     <div class="content" ng-controller="ACtrl">
+        <h2>Configuration ...</h2>
 
 
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="exampleInputName2">Name</label>
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail2">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-            </div>
-            <button type="submit" class="btn btn-default">Send invitation</button>
-        </form>
-        <form class="form-inline">
-            <div class="form-group">
-                <label for="exampleInputName2">Name</label>
-                <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail2">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-            </div>
-            <button type="submit" class="btn btn-default">Send invitation</button>
-        </form>
-       {{a}}
-       <div ng-repeat=" line in lines">
-          Temperature <input type="number" ng-model="line.temperature"/> °C
-          Time interval   <input type="number" ng-model="line.time"/> seconds
-          start <span>{{line.start}}</span>
-          stop <span>{{line.stop}}</span>
-          <button ng-click="add()" ng-show="$last" >Add next</button>
-       </div>
+       <form class="form-inline" ng-repeat=" line in lines">
+           <div class="form-group">
+               <label>Temperature</label>
+               <input type="number" ng-model="line.temperature" class="form-control" placeholder="temperature as number"/> °C
+           </div>
+           <div class="form-group">
+               <label>Time interval</label>
+               <input type="number" ng-model="line.time" class="form-control" placeholder="time in seconds"/>
+           </div>
+           ( start <span>{{line.start}} sec.</span>
+           stop <span>{{line.stop}} sec.</span>)
+           <button class="btn btn-primary" ng-click="add()" ng-show="$last" >Add next</button>
+       </form>
     </div>
     <br/>
+    <div id="container">Placeholder for chart</div>
+    <br/>
     <div>
-    <canvas id="myCanvas" width="600" height="300" style="border:1px solid #d3d3d3;">
-        Your browser does not support the HTML5 canvas tag.
-    </canvas>
+        <canvas id="myCanvas" width="600" height="300" class="draw-line-canvas">
+            Your browser does not support the HTML5 canvas tag.
+        </canvas>
     </div>
 
     <script src="http://localhost:35729/livereload.js"></script>

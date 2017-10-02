@@ -118,3 +118,11 @@ body {
 }
 
 /*---------------   angular-drag-and-drop-lists -------------------------*/
+
+.form-inline {
+    padding-top: 10px;
+}
+.draw-line-canvas {
+    margin-left: 10px;
+    border:1px solid #d3d3d3;
+}

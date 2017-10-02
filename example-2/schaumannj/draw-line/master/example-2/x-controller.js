@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('fw').controller('ACtrl', function($scope) {
+angular.module('test').controller('ACtrl', function($scope) {
 
     $scope.CANVAS_HEIGHT = 300;
     $scope.TEMPERATURE_STEP = 10; // it is how many degree increases/decreates per 1 second
@@ -14,6 +14,17 @@ angular.module('fw').controller('ACtrl', function($scope) {
         drawLine($scope.lines);
     }
     init();
+
+    Highcharts.chart('container', {
+
+        xAxis: {
+            categories: ['Period 1', 'Period 2', 'Period 3']
+        },
+
+        series: [{
+            data: [0, 100, 100, 50, 150 ]
+        }]
+    });
 
     function drawLine(data) {
         var c = document.getElementById("myCanvas");
@@ -42,9 +53,6 @@ angular.module('fw').controller('ACtrl', function($scope) {
         drawLine($scope.lines);
         $scope.lines.push({start: 1});
     };
-
-
-    $scope.$on('$stateChangeSuccess', init);
 
 
 });
