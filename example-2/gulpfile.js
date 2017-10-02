@@ -48,7 +48,7 @@ function notifyLivereload(event) {
 gulp.task('index', function () {
     var target = gulp.src('./index.html');
     // It's not necessary to read the files (will speed up things), we're only after their paths:
-    var sources = gulp.src(['./**/*.js'], {read: false});
+    var sources = gulp.src(['./schaumannj/**/*.js'], {read: false});
 
     return target.pipe(inject(sources)).pipe(gulp.dest('.'));
 });
