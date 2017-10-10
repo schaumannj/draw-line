@@ -7,19 +7,30 @@
 
     <link href="/schaumannj/draw-line/master/example-2/css/tmp_move_to_sass.css" rel="stylesheet">
 
+    <!--JQuery-->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
     <!--Angular-->
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <!--UI.ROUTER-->
+    <script src="node_modules/angular-ui-router/release/angular-ui-router.min.js"></script>
     <!--Lodash-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.16.6/lodash.min.js"></script>
     <!--Highchart-->
     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/solid-gauge.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/parallel-coordinates.js"></script>
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
     <!-- inject:js -->
-    <script src="/schaumannj/draw-line/master/example-2/a.js"></script>
-    <script src="/schaumannj/draw-line/master/example-2/x-controller.js"></script>
+    <script src="/schaumannj/draw-line/master/example-2/all-global-config.js"></script>
+    <script src="/schaumannj/draw-line/master/example-2/config-ctrl.js"></script>
+    <script src="/schaumannj/draw-line/master/example-2/dashboard-ctrl.js"></script>
+    <script src="/schaumannj/draw-line/master/example-2/overview-ctrl.js"></script>
     <!-- endinject -->
 
 
@@ -28,40 +39,41 @@
 </head>
 <body>
 
+    <!--NAVIGATION-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <!--<div class="navbar-header">-->
+                <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">-->
+                    <!--<span class="sr-only">Toggle navigation</span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                    <!--<span class="icon-bar"></span>-->
+                <!--</button>-->
+                <!--<a class="navbar-brand" href="#" src="https://www.activair.cz/gfx/logo.png">Brand</a>-->
+            <!--</div>-->
+            <a class="navbar-brand" href="#">
+                <img alt="ActiveAir" src="/logo.png" href="https://www.activair.cz">
+            </a>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="overview"><i class="glyphicon glyphicon-dashboard"></i> Overview</a></li>
+                    <li ui-sref-active="active"><a ui-sref="config"><i class="glyphicon glyphicon-cog"></i> Configuration</a></li>
+                    <li ui-sref-active="active"><a ui-sref="dashboard"><i class="glyphicon glyphicon-scale"></i> Dashboard</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
     <!-- ----------------------- main content ---------------------------------------------------- -->
-    <div class="content" ng-controller="ACtrl">
-        <h2>Configuration ...</h2>
-
-
-       <form class="form-inline" ng-repeat=" line in lines">
-           <div class="form-group">
-               <label>Temperature</label>
-               <input type="number" ng-model="line.temperature" class="form-control" placeholder="temperature as number"/> °C
-           </div>
-           <div class="form-group">
-               <label>Time interval</label>
-               <input type="number" ng-model="line.time" class="form-control" placeholder="time in seconds"/>
-           </div>
-           ( start <span>{{line.start}} sec.</span>
-           stop <span>{{line.stop}} sec.</span>)
-           <button class="btn btn-primary" ng-click="add()" ng-show="$last" >Add next</button>
-       </form>
+    <div class="container">
+        <div class="page-header">
+            <div ui-view></div>
+        </div>
     </div>
-    <br/>
-    <div id="container">Placeholder for chart</div>
-    <br/>
-    <div>
-        <canvas id="myCanvas" width="600" height="300" class="draw-line-canvas">
-            Your browser does not support the HTML5 canvas tag.
-        </canvas>
-    </div>
+
 
     <script src="http://localhost:35729/livereload.js"></script>
-    
-
-
-
-
-
 </body>
 </html>
